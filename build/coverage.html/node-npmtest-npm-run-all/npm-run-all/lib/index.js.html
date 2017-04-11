@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-npm-run-all/npm-run-all/lib/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-npm-run-all">npmtest-npm-run-all (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-npm-run-all/npm-run-all/lib/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">13.95% <small>(12 / 86)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 86)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">14.46% <small>(12 / 83)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-npm-run-all/npm-run-all/lib/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @module index
+ * @author Toru Nagashima
+ * @copyright 2015 Toru Nagashima. All rights reserved.
+ * See LICENSE file in root directory for full license.
+ */
+"use strict"
+&nbsp;
+//------------------------------------------------------------------------------
+// Requirements
+//------------------------------------------------------------------------------
+&nbsp;
+const shellQuote = require("shell-quote")
+const matchTasks = require("./match-tasks")
+const readPackageJson = require("./read-package-json")
+const runTasks = require("./run-tasks")
+&nbsp;
+//------------------------------------------------------------------------------
+// Helpers
+//------------------------------------------------------------------------------
+&nbsp;
+const ARGS_PATTERN = /\{(!)?([*@]|\d+)([^}]+)?}/g
+&nbsp;
+/**
+ * Converts a given value to an array.
+ *
+ * @param {string|string[]|null|undefined} x - A value to convert.
+ * @returns {string[]} An array.
+ */
+<span class="fstat-no" title="function not covered" >function toArray(x) {</span>
+<span class="cstat-no" title="statement not covered" >    if (x == null) {</span>
+<span class="cstat-no" title="statement not covered" >        return []</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return Array.isArray(x) ? x : [x]</span>
+}
+&nbsp;
+/**
+ * Replaces argument placeholders (such as `{1}`) by arguments.
+ *
+ * @param {string[]} patterns - Patterns to replace.
+ * @param {string[]} args - Arguments to replace.
+ * @returns {string[]} replaced
+ */
+<span class="fstat-no" title="function not covered" >function applyArguments(patterns, args) {</span>
+<span class="cstat-no" title="statement not covered" >    const defaults = Object.create(null)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return patterns.map(pattern =&gt; <span class="cstat-no" title="statement not covered" >pattern.replace(ARGS_PATTERN, (whole, indirectionMark, id, options) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (indirectionMark != null) {</span>
+<span class="cstat-no" title="statement not covered" >            throw Error(`Invalid Placeholder: ${whole}`)</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (id === "@") {</span>
+<span class="cstat-no" title="statement not covered" >            return shellQuote.quote(args)</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (id === "*") {</span>
+<span class="cstat-no" title="statement not covered" >            return shellQuote.quote([args.join(" ")])</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        const position = parseInt(id, 10)</span>
+<span class="cstat-no" title="statement not covered" >        if (position &gt;= 1 &amp;&amp; position &lt;= args.length) {</span>
+<span class="cstat-no" title="statement not covered" >            return shellQuote.quote([args[position - 1]])</span>
+        }
+&nbsp;
+        // Address default values
+<span class="cstat-no" title="statement not covered" >        if (options != null) {</span>
+<span class="cstat-no" title="statement not covered" >            const prefix = options.slice(0, 2)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (prefix === ":=") {</span>
+<span class="cstat-no" title="statement not covered" >                defaults[id] = shellQuote.quote([options.slice(2)])</span>
+<span class="cstat-no" title="statement not covered" >                return defaults[id]</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (prefix === ":-") {</span>
+<span class="cstat-no" title="statement not covered" >                return shellQuote.quote([options.slice(2)])</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            throw Error(`Invalid Placeholder: ${whole}`)</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (defaults[id] != null) {</span>
+<span class="cstat-no" title="statement not covered" >            return defaults[id]</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return ""</span>
+    }))
+}
+&nbsp;
+/**
+ * Parse patterns.
+ * In parsing process, it replaces argument placeholders (such as `{1}`) by arguments.
+ *
+ * @param {string|string[]} patternOrPatterns - Patterns to run.
+ *      A pattern is a npm-script name or a Glob-like pattern.
+ * @param {string[]} args - Arguments to replace placeholders.
+ * @returns {string[]} Parsed patterns.
+ */
+<span class="fstat-no" title="function not covered" >function parsePatterns(patternOrPatterns, args) {</span>
+<span class="cstat-no" title="statement not covered" >    const patterns = toArray(patternOrPatterns)</span>
+<span class="cstat-no" title="statement not covered" >    const hasPlaceholder = patterns.some(pattern =&gt; <span class="cstat-no" title="statement not covered" >ARGS_PATTERN.test(pattern))</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return hasPlaceholder ? applyArguments(patterns, args) : patterns</span>
+}
+&nbsp;
+/**
+ * Converts a given config object to an `--:=` style option array.
+ *
+ * @param {object|null} config -
+ *   A map-like object to overwrite package configs.
+ *   Keys are package names.
+ *   Every value is a map-like object (Pairs of variable name and value).
+ * @returns {string[]} `--:=` style options.
+ */
+<span class="fstat-no" title="function not covered" >function toOverwriteOptions(config) {</span>
+<span class="cstat-no" title="statement not covered" >    const options = []</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Object.keys(config).forEach(packageName =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        const packageConfig = config[packageName]</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        Object.keys(packageConfig).forEach(variableName =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            const value = packageConfig[variableName]</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            options.push(`--${packageName}:${variableName}=${value}`)</span>
+        })
+    })
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return options</span>
+}
+&nbsp;
+/**
+ * Converts a given config object to an `--a=b` style option array.
+ *
+ * @param {object|null} config -
+ *   A map-like object to set configs.
+ * @returns {string[]} `--a=b` style options.
+ */
+<span class="fstat-no" title="function not covered" >function toConfigOptions(config) {</span>
+<span class="cstat-no" title="statement not covered" >    return Object.keys(config).map(key =&gt; <span class="cstat-no" title="statement not covered" >`--${key}=${config[key]}`)</span></span>
+}
+&nbsp;
+/**
+ * Gets the maximum length.
+ *
+ * @param {number} length - The current maximum length.
+ * @param {string} name - A name.
+ * @returns {number} The maximum length.
+ */
+<span class="fstat-no" title="function not covered" >function maxLength(length, name) {</span>
+<span class="cstat-no" title="statement not covered" >    return Math.max(name.length, length)</span>
+}
+&nbsp;
+//------------------------------------------------------------------------------
+// Public Interface
+//------------------------------------------------------------------------------
+&nbsp;
+/**
+ * Runs npm-scripts which are matched with given patterns.
+ *
+ * @param {string|string[]} patternOrPatterns - Patterns to run.
+ *   A pattern is a npm-script name or a Glob-like pattern.
+ * @param {object|undefined} [options] Optional.
+ * @param {boolean} options.parallel -
+ *   If this is `true`, run scripts in parallel.
+ *   Otherwise, run scripts in sequencial.
+ *   Default is `false`.
+ * @param {stream.Readable|null} options.stdin -
+ *   A readable stream to send messages to stdin of child process.
+ *   If this is `null`, ignores it.
+ *   If this is `process.stdin`, inherits it.
+ *   Otherwise, makes a pipe.
+ *   Default is `null`.
+ * @param {stream.Writable|null} options.stdout -
+ *   A writable stream to receive messages from stdout of child process.
+ *   If this is `null`, cannot send.
+ *   If this is `process.stdout`, inherits it.
+ *   Otherwise, makes a pipe.
+ *   Default is `null`.
+ * @param {stream.Writable|null} options.stderr -
+ *   A writable stream to receive messages from stderr of child process.
+ *   If this is `null`, cannot send.
+ *   If this is `process.stderr`, inherits it.
+ *   Otherwise, makes a pipe.
+ *   Default is `null`.
+ * @param {string[]} options.taskList -
+ *   Actual name list of npm-scripts.
+ *   This function search npm-script names in this list.
+ *   If this is `null`, this function reads `package.json` of current directly.
+ * @param {object|null} options.packageConfig -
+ *   A map-like object to overwrite package configs.
+ *   Keys are package names.
+ *   Every value is a map-like object (Pairs of variable name and value).
+ *   e.g. `{"npm-run-all": {"test": 777}}`
+ *   Default is `null`.
+ * @param {boolean} options.silent -
+ *   The flag to set `silent` to the log level of npm.
+ *   Default is `false`.
+ * @param {boolean} options.continueOnError -
+ *   The flag to ignore errors.
+ *   Default is `false`.
+ * @param {boolean} options.printLabel -
+ *   The flag to print task names at the head of each line.
+ *   Default is `false`.
+ * @param {boolean} options.printName -
+ *   The flag to print task names before running each task.
+ *   Default is `false`.
+ * @param {number} options.maxParallel -
+ *   The maximum number of parallelism.
+ *   Default is unlimited.
+ * @param {string} options.npmPath -
+ *   The path to npm.
+ *   Default is `process.env.npm_execpath`.
+ * @returns {Promise}
+ *   A promise object which becomes fullfilled when all npm-scripts are completed.
+ */
+module.exports = <span class="fstat-no" title="function not covered" >function npmRunAll(patternOrPatterns, options) {</span>
+<span class="cstat-no" title="statement not covered" >    const stdin = (options &amp;&amp; options.stdin) || null</span>
+<span class="cstat-no" title="statement not covered" >    const stdout = (options &amp;&amp; options.stdout) || null</span>
+<span class="cstat-no" title="statement not covered" >    const stderr = (options &amp;&amp; options.stderr) || null</span>
+<span class="cstat-no" title="statement not covered" >    const taskList = (options &amp;&amp; options.taskList) || null</span>
+<span class="cstat-no" title="statement not covered" >    const config = (options &amp;&amp; options.config) || null</span>
+<span class="cstat-no" title="statement not covered" >    const packageConfig = (options &amp;&amp; options.packageConfig) || null</span>
+<span class="cstat-no" title="statement not covered" >    const args = (options &amp;&amp; options.arguments) || []</span>
+<span class="cstat-no" title="statement not covered" >    const parallel = Boolean(options &amp;&amp; options.parallel)</span>
+<span class="cstat-no" title="statement not covered" >    const silent = Boolean(options &amp;&amp; options.silent)</span>
+<span class="cstat-no" title="statement not covered" >    const continueOnError = Boolean(options &amp;&amp; options.continueOnError)</span>
+<span class="cstat-no" title="statement not covered" >    const printLabel = Boolean(options &amp;&amp; options.printLabel)</span>
+<span class="cstat-no" title="statement not covered" >    const printName = Boolean(options &amp;&amp; options.printName)</span>
+<span class="cstat-no" title="statement not covered" >    const race = Boolean(options &amp;&amp; options.race)</span>
+<span class="cstat-no" title="statement not covered" >    const maxParallel = parallel ? ((options &amp;&amp; options.maxParallel) || 0) : 1</span>
+<span class="cstat-no" title="statement not covered" >    const npmPath = options &amp;&amp; options.npmPath</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >        const patterns = parsePatterns(patternOrPatterns, args)</span>
+<span class="cstat-no" title="statement not covered" >        if (patterns.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >            return Promise.resolve(null)</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (taskList != null &amp;&amp; Array.isArray(taskList) === false) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Invalid options.taskList")</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (typeof maxParallel !== "number" || !(maxParallel &gt;= 0)) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Invalid options.maxParallel")</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!parallel &amp;&amp; race) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Invalid options.race")</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        const prefixOptions = [].concat(</span>
+            silent ? ["--silent"] : [],
+            packageConfig ? toOverwriteOptions(packageConfig) : [],
+            config ? toConfigOptions(config) : []
+        )
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return Promise.resolve()</span>
+            .then(() =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (taskList != null) {</span>
+<span class="cstat-no" title="statement not covered" >                    return {taskList, packageInfo: null}</span>
+                }
+<span class="cstat-no" title="statement not covered" >                return readPackageJson()</span>
+            })
+            .then(x =&gt; {
+<span class="cstat-no" title="statement not covered" >                const tasks = matchTasks(x.taskList, patterns)</span>
+<span class="cstat-no" title="statement not covered" >                const labelWidth = tasks.reduce(maxLength, 0)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return runTasks(tasks, {</span>
+                    stdin,
+                    stdout,
+                    stderr,
+                    prefixOptions,
+                    continueOnError,
+                    labelState: {
+                        enabled: printLabel,
+                        width: labelWidth,
+                        lastPrefix: null,
+                        lastIsLinebreak: true,
+                    },
+                    printName,
+                    packageInfo: x.packageInfo,
+                    race,
+                    maxParallel,
+                    npmPath,
+                })
+            })
+    }
+    catch (err) {
+<span class="cstat-no" title="statement not covered" >        return Promise.reject(new Error(err.message))</span>
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 07:28:36 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
