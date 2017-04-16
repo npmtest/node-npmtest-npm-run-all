@@ -42,7 +42,7 @@
 <tspan x="10" y="634">  │ │ ├── pify@2.3.0 </tspan>
 <tspan x="10" y="650">  │ │ └── strip-bom@3.0.0 </tspan>
 <tspan x="10" y="666">  │ ├─┬ normalize-package-data@2.3.6 </tspan>
-<tspan x="10" y="682">  │ │ ├── hosted-git-info@2.4.1 </tspan>
+<tspan x="10" y="682">  │ │ ├── hosted-git-info@2.4.2 </tspan>
 <tspan x="10" y="698">  │ │ ├─┬ is-builtin-module@1.0.0 </tspan>
 <tspan x="10" y="714">  │ │ │ └── builtin-modules@1.1.1 </tspan>
 <tspan x="10" y="730">  │ │ ├── semver@5.3.0 </tspan>
