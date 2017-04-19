@@ -1,6 +1,6 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "test coverage for [npm-run-all (v4.0.2)](https://github.com/mysticatea/npm-run-all) [![npm package](https://img.shields.io/npm/v/npmtest-npm-run-all.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-npm-run-all) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-npm-run-all.svg)](https://travis-ci.org/npmtest/node-npmtest-npm-run-all)",
+    "description": "#### test coverage for  [npm-run-all (v4.0.2)](https://github.com/mysticatea/npm-run-all)  [![npm package](https://img.shields.io/npm/v/npmtest-npm-run-all.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-npm-run-all) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-npm-run-all.svg)](https://travis-ci.org/npmtest/node-npmtest-npm-run-all)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "npm-run-all": "*",
@@ -36,5 +36,5 @@
         "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.2"
+    "version": "0.0.3"
 }
